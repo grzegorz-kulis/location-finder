@@ -5,42 +5,58 @@ import com.gkul.LocationFinder.model.LocationDto;
 import com.gkul.LocationFinder.model.Locations;
 import com.gkul.LocationFinder.service.LocationDomainToDtoMapper;
 import com.gkul.LocationFinder.service.LocationFinder;
-import com.gkul.LocationFinder.service.LocationRepositoryDummy;
 import com.gkul.LocationFinder.service.LocationService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 @Slf4j
 @RestController
 @RequestMapping("/locations")
 public class LocationController {
 
-    @Autowired
-    private LocationDomainToDtoMapper locationDomainToDtoMapper;
+    private final LocationDomainToDtoMapper locationDomainToDtoMapper;
 
-    @Autowired
-    private LocationService locationService;
+    private final LocationService locationService;
 
-    @Autowired
-    // this is just a in-memory database dummy, ideally SQL database would be used
-    private LocationRepositoryDummy locationRepositoryDummy;
+    private final LocationFinder locationFinder;
 
-    @PostMapping("/save")
+    public LocationController(LocationDomainToDtoMapper locationDomainToDtoMapper,
+                              LocationService locationService,
+                              LocationFinder locationFinder) {
+        this.locationDomainToDtoMapper = locationDomainToDtoMapper;
+        this.locationService = locationService;
+        this.locationFinder = locationFinder;
+    }
+
+    @GetMapping("/getLocation")
+    public ResponseEntity<Location> getLocation(@RequestParam(value = "id") int id) {
+        return ResponseEntity.ok(locationService.getLocation(id));
+    }
+
+    @GetMapping("/getLocations")
+    public ResponseEntity<List<Location>> getLocations() {
+        return ResponseEntity.ok(locationService.getLocations());
+    }
+
+    @PostMapping("/saveLocations")
     public ResponseEntity saveLocations(@RequestBody Locations locations) {
+        locationService.saveLocations(locations.getLocationList());
+        return ResponseEntity.ok().build();
+    }
 
-        locationRepositoryDummy.addAllLocations(locations.getLocationList());
-//        locationService.saveLocations(locations.getLocationList());
-
+    @PostMapping("/saveLocation")
+    public ResponseEntity saveLocation(@RequestBody Location location) {
+        locationService.saveLocation(location);
         return ResponseEntity.ok().build();
     }
 
     @PostMapping("/getClosest")
     public ResponseEntity<LocationDto> getClosestLocation(@RequestBody Location location /* ideally we would accept LocationDto
-            but for the sake of simplicity lets accept Location, keeping it simple */) {
-        Location closestLocation = locationService.findClosestLocation(location);
+            and use mapper but for the sake of simplicity lets accept Location, keeping it simple */) {
+        Location closestLocation = locationFinder.findClosestLocation(location);
         return ResponseEntity.ok(locationDomainToDtoMapper.map(closestLocation));
     }
 }

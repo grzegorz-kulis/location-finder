@@ -9,5 +9,5 @@ public class LocationDto {
     private String locationName;
     private String latitude;
     private String longitude;
-    private Integer distance;
+    private double distance;
 }

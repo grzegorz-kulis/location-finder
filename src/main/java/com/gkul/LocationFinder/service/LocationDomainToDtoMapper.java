@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 @Component
 public class LocationDomainToDtoMapper implements Mapper<LocationDto, Location> {
 
-
     @Override
     @Nullable
     public LocationDto map(Location value) {
@@ -21,6 +20,7 @@ public class LocationDomainToDtoMapper implements Mapper<LocationDto, Location> 
         locationDto.setLocationName(value.getLocationName());
         locationDto.setLatitude(value.getLatitude().conciseLatitude());
         locationDto.setLongitude(value.getLongitude().conciseLongitude());
+        locationDto.setDistance(value.getDistance());
 
         return locationDto;
     }

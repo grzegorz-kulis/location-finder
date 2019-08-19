@@ -13,9 +13,11 @@ import javax.persistence.*;
 @JsonIgnoreProperties
 public class Longitude extends GeoCoordinate {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "longitude_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
+
+    @Enumerated(EnumType.STRING)
     @Column(name = "longitude_marker")
     private LongitudeMarker longitudeMarker;
 
@@ -30,7 +32,7 @@ public class Longitude extends GeoCoordinate {
         this.longitudeMarker = longitudeMarker;
     }
 
-    private enum LongitudeMarker {
+    public enum LongitudeMarker {
         @JsonProperty("E")
         E("East"),
         @JsonProperty("W")
@@ -44,6 +46,6 @@ public class Longitude extends GeoCoordinate {
     }
 
     public String conciseLongitude() {
-        return super.getDegree() + "°" + super.getArcminute() + "'" + longitudeMarker;
+        return super.getDegree() + "°" + super.getArcminute() + "'" + this.longitudeMarker;
     }
 }

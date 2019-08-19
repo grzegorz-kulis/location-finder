@@ -1,19 +1,24 @@
 package com.gkul.LocationFinder.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.*;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name = "locations")
 @JsonIgnoreProperties
 public class Location {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "location_id")
     private int id;
     @Nullable
@@ -29,6 +34,8 @@ public class Location {
     private Longitude longitude;
 
     @Nullable
+    @JsonIgnore
+    @Transient
     private double distance;
 
 }

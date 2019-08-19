@@ -20,7 +20,6 @@ create TABLE longitude (
 create TABLE locations (
   id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   location_name VARCHAR(250) NOT NULL,
-  distance FLOAT DEFAULT NULL,
   latitude_id int(11) NOT NULL,
   longitude_id int(11) NOT NULL,
   KEY FK_LATITUDE_idx (latitude_id),

@@ -9,6 +9,4 @@ public interface LocationService {
     void saveLocation(Location location);
     void saveLocations(List<Location> locationList);
     Location getLocation(int id);
-
-    Location findClosestLocation(Location location);
 }

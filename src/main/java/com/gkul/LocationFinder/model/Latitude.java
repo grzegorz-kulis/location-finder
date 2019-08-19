@@ -15,10 +15,11 @@ import javax.persistence.*;
 public class Latitude extends GeoCoordinate {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "latitude_id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int id;
 
+    @Enumerated(EnumType.STRING)
     @Column(name = "latitude_marker")
     private LatitudeMarker latitudeMarker;
 
@@ -33,7 +34,7 @@ public class Latitude extends GeoCoordinate {
         this.latitudeMarker = latitudeMarker;
     }
 
-    private enum LatitudeMarker {
+    public enum LatitudeMarker {
         @JsonProperty("N")
         N("North"),
         @JsonProperty("S")
@@ -47,6 +48,6 @@ public class Latitude extends GeoCoordinate {
     }
 
     public String conciseLatitude() {
-        return super.getDegree() + "°" + super.getArcminute() + "'" + latitudeMarker;
+        return super.getDegree() + "°" + super.getArcminute() + "'" + this.latitudeMarker;
     }
 }
