@@ -1,0 +1,131 @@
+POST /locations/saveLocations HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+cache-control: no-cache
+{
+    "locations":
+    [
+        {
+            "locationName": "Szczecin",
+            "latitude":
+            {
+                "latitudeMarker": "N",
+                "degree": 53,
+                "arcminute": 26
+            },
+            "longitude":
+            {
+                "longitudeMarker": "E",
+                "degree": 14,
+                "arcminute": 32
+            }
+        },
+        {
+            "locationName": "Warsaw",
+            "latitude":
+            {
+                "latitudeMarker": "N",
+                "degree": 52,
+                "arcminute": 13
+            },
+            "longitude":
+            {
+                "longitudeMarker": "E",
+                "degree": 21,
+                "arcminute": 0
+            }
+        },
+        {
+            "locationName": "Gniezno",
+            "latitude":
+            {
+                "latitudeMarker": "N",
+                "degree": 52,
+                "arcminute": 32
+            },
+            "longitude":
+            {
+                "longitudeMarker": "E",
+                "degree": 17,
+                "arcminute": 36
+            }
+        },
+        {
+            "locationName": "New York",
+            "latitude":
+            {
+                "latitudeMarker": "N",
+                "degree": 40,
+                "arcminute": 43
+            },
+            "longitude":
+            {
+                "longitudeMarker": "W",
+                "degree": 74,
+                "arcminute": 0
+            }
+        },
+        {
+            "locationName": "Tokio",
+            "latitude":
+            {
+                "latitudeMarker": "N",
+                "degree": 35,
+                "arcminute": 41
+            },
+            "longitude":
+             {
+                "longitudeMarker": "E",
+                "degree": 139,
+                "arcminute": 46
+            }
+        },
+        {
+            "locationName": "Buenos Aires",
+            "latitude":
+            {
+                "latitudeMarker": "S",
+                "degree": 34,
+                "arcminute": 35
+            },
+            "longitude":
+            {
+                "longitudeMarker": "W",
+                "degree": 58,
+                "arcminute": 55
+            }
+        },
+        {
+            "locationName": "Sydney",
+            "latitude":
+            {
+                "latitudeMarker": "S",
+                "degree": 33,
+                "arcminute": 52
+            },
+            "longitude":
+            {
+                "longitudeMarker": "E",
+                "degree": 151,
+                "arcminute": 12
+            }
+        },
+        {
+            "locationName": "London",
+            "latitude":
+            {
+                "latitudeMarker": "N",
+                "degree": 51,
+                "arcminute": 30
+            },
+            "longitude":
+            {
+                "longitudeMarker": "W",
+                "degree": 0,
+                "arcminute": 7
+            }
+        }
+    ]
+}
+
+###

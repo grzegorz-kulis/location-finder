@@ -54,7 +54,7 @@ public class LocationFinderTest {
                 "Gniezno",
                 new Latitude(Latitude.LatitudeMarker.N, 52, 32),
                 new Longitude(Longitude.LongitudeMarker.E, 17, 36),
-                0);
+                0); // ~47 km
 
         // Poznan
         userLocationPoznan = new Location(index++,

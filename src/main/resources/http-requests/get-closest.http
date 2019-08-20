@@ -1,0 +1,44 @@
+// PEKIN
+
+POST /locations/getClosest HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+cache-control: no-cache
+{
+    "latitude":
+    {
+        "latitudeMarker": "N",
+        "degree": 39,
+        "arcminute": 55
+    },
+    "longitude":
+    {
+        "longitudeMarker": "E",
+        "degree": 116,
+        "arcminute": 23
+    }
+}
+
+###
+// DJAKARTA
+
+POST /locations/getClosest HTTP/1.1
+Host: localhost:8080
+Content-Type: application/json
+cache-control: no-cache
+{
+   "latitude":
+   {
+      "latitudeMarker": "S",
+      "degree": 6,
+      "arcminute": 10
+},
+   "longitude":
+   {
+      "longitudeMarker": "E",
+      "degree": 106,
+       "arcminute": 49
+   }
+}
+
+###
